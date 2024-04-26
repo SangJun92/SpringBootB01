@@ -32,8 +32,8 @@ public class NoticeServiceImpl implements NoticeService{
     public NoticeDTO readOne(Long no){
         Optional<Notice> result = noticeRepository.findById(no);
         Notice notice = result.orElseThrow();
-        NoticeDTO noticeDTO = modelMapper.map(noticeRepository.findById(no), NoticeDTO.class);
-        return null;
+        NoticeDTO noticeDTO = modelMapper.map(notice, NoticeDTO.class);
+        return noticeDTO;
     }
     @Override
     public void modify(NoticeDTO dto){

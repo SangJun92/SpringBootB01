@@ -23,7 +23,7 @@
 					<legend>검색</legend>
 					<input type="text" class="tbox" title="검색어를 입력해주세요" placeholder="검색어를 입력해주세요">
 					<a href="javascript:;" class="btn_srch">검색</a>
-					<a href="/ex/notice_add" class="btn_srch">등록</a>
+					<a href="/ex/notice_add" class="btn_srch">글쓰기</a>
 				</fieldset>
 			</form>
 			<table class="bbsListTbl" summary="번호,제목,조회수,작성일 등을 제공하는 표">
@@ -39,7 +39,7 @@
 				<tbody>
 				<tr th:each="notice:${noticeList}">
 					<td th:text="${notice.no}"></td>
-					<td class="tit_notice"><a href="/ex/notice_view">[[${notice.title}]]</a></td>
+					<td class="tit_notice"><a th:href="@{/ex/notice_view(no=${notice.no}, count=${notice.count})}">[[${notice.title}]]</a></td>
 					<td>[[${notice.count}]]</td>
 					<td>[[${#temporals.format(notice.regDate, 'yyyy-MM-dd')}]]</td>
 				</tr>

@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.zerock.b01.domain.Notice;
+import org.zerock.b01.dto.NoticeDTO;
 import org.zerock.b01.dto.PageRequestDTO;
 import org.zerock.b01.service.NoticeService;
 
@@ -89,12 +93,24 @@ public class SampleController {
         model.addAttribute("arr", new String[]{"AAA", "BBB", "CCC"});
     }
     @GetMapping("/ex/notice_add")
-    public void notice_add(Model model){
-        model.addAttribute("arr",new String[]{"AAA","BBB","CCC"});
+    public void notice_addGet(NoticeDTO noticeDTO, Model model){
+
     }
-    @GetMapping("/ex/notice_view")
-    public void notice_view(Model model){
-        model.addAttribute("arr",new String[]{"AAA","BBB","CCC"});
+
+    @PostMapping("/ex/notice_add")
+    public String notice_addPost(NoticeDTO noticeDTO, Model model){
+        Long no = noticeService.register(noticeDTO);
+        model.addAttribute("no", no);
+
+        return "redirect:/ex/notice_list";
+    }
+
+    @GetMapping({"/ex/notice_view", "/ex/notice_modify"})
+    public void notice_view (Long no, Model model) {
+        NoticeDTO dto = noticeService.readOne(no);
+        System.out.println(dto);
+        model.addAttribute("dto", dto);
+
     }
     @GetMapping("/ex/program")
     public void program(Model model){
@@ -109,5 +125,19 @@ public class SampleController {
         model.addAttribute("noticeList", noticeService.list(pageRequestDTO));
     }
 
+    @PostMapping("/ex/notice_remove")
+    public String notice_remove(Long no, Model model){
+        noticeService.remove(no);
+
+        return "redirect:/ex/notice_list";
+    }
+
+    @PostMapping("/ex/notice_modify")
+    public String notice_modify(NoticeDTO noticeDTO, Model model){
+        System.out.println(noticeDTO.getContent());
+        noticeService.modify(noticeDTO);
+
+        return "redirect:/ex/notice_view?no=" + noticeDTO.getNo();
+    }
 }
 
