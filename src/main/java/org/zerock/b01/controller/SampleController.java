@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.zerock.b01.domain.Notice;
+import org.zerock.b01.dto.MemberDTO;
 import org.zerock.b01.dto.NoticeDTO;
 import org.zerock.b01.dto.PageRequestDTO;
 import org.zerock.b01.service.NoticeService;
@@ -80,18 +81,25 @@ public class SampleController {
     public void ex3(Model model){
         model.addAttribute("arr",new String[]{"AAA","BBB","CCC"});
     }
+
     @GetMapping("/ex/index")
     public void index(Model model){
         model.addAttribute("arr",new String[]{"AAA","BBB","CCC"});
     }
+
     @GetMapping("/ex/join")
-    public void join(Model model){
-        model.addAttribute("arr",new String[]{"AAA","BBB","CCC"});
+    public void join(MemberDTO memberDTO) {
+
+
+
+//        return "redirect:/ex/login";
     }
+
     @GetMapping("/ex/login")
     public void login(Model model) {
         model.addAttribute("arr", new String[]{"AAA", "BBB", "CCC"});
     }
+
     @GetMapping("/ex/notice_add")
     public void notice_addGet(NoticeDTO noticeDTO, Model model){
 
@@ -134,7 +142,6 @@ public class SampleController {
 
     @PostMapping("/ex/notice_modify")
     public String notice_modify(NoticeDTO noticeDTO, Model model){
-        System.out.println(noticeDTO.getContent());
         noticeService.modify(noticeDTO);
 
         return "redirect:/ex/notice_view?no=" + noticeDTO.getNo();
