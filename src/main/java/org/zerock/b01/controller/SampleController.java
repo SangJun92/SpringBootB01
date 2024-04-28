@@ -8,10 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.zerock.b01.domain.Member;
 import org.zerock.b01.domain.Notice;
 import org.zerock.b01.dto.MemberDTO;
 import org.zerock.b01.dto.NoticeDTO;
 import org.zerock.b01.dto.PageRequestDTO;
+import org.zerock.b01.repository.MemberRepository;
+import org.zerock.b01.service.MemberService;
 import org.zerock.b01.service.NoticeService;
 
 import java.util.Arrays;
@@ -26,7 +29,10 @@ import java.util.stream.IntStream;
 public class SampleController {
     @Autowired
     private NoticeService noticeService;
-
+    @Autowired
+    private MemberService memberService;
+    @Autowired
+    private MemberRepository memberRepository;
 
     @GetMapping("/hello")
     public void hello(Model model) {
@@ -88,11 +94,30 @@ public class SampleController {
     }
 
     @GetMapping("/ex/join")
-    public void join(MemberDTO memberDTO) {
+    public void joinGet(MemberDTO memberDTO, Model model){
 
+    }
 
+    @PostMapping("/ex/join")
+    public String joinPost(MemberDTO memberDTO, Model model) {
 
-//        return "redirect:/ex/login";
+//        System.out.println("1");
+//        String no = memberService.register(memberDTO);
+//        model.addAttribute("no", no);
+//        System.out.println("2");
+//        return "redirect:/ex/index";
+
+        try {
+            String memberId = memberService.register(memberDTO);
+            model.addAttribute("memberId", memberId);
+
+            return "redirect:/ex/index";
+        } catch (Exception e) {
+
+            model.addAttribute("error", "회원 가입 중 오류가 발생했습니다.");
+            return "error"; // 예를 들어, error.html 페이지로 이동하는 것으로 가정
+        }
+
     }
 
     @GetMapping("/ex/login")
@@ -116,7 +141,6 @@ public class SampleController {
     @GetMapping({"/ex/notice_view", "/ex/notice_modify"})
     public void notice_view (Long no, Model model) {
         NoticeDTO dto = noticeService.readOne(no);
-        System.out.println(dto);
         model.addAttribute("dto", dto);
 
     }

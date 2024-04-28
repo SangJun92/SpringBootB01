@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -21,5 +22,5 @@ public class MemberDTO {
     private String Email2;
     private String gender;
     private boolean agree;
-    private LocalDate create_date;
+    private LocalDateTime create_date;
 }
