@@ -66,6 +66,6 @@ public class ReplyController {
   public ReplyDTO getReply(@PathVariable("rno") Long rno) {
     ReplyDTO replyDTO = replyService.read(rno);
 
-    return replyDTO;;
+    return replyDTO;
   }
 }
