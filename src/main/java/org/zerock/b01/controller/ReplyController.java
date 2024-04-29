@@ -51,7 +51,7 @@ public class ReplyController {
 
     return resultMap;
   }
-
+  @Tag(name = "Replies of Board", description = "get 방식 특정 게시물의 댓글 등록")
   // 특정 댓글 하나 조회
   @GetMapping(value = "/list/{bno}")
   public PageResponseDTO<ReplyDTO> getList(@PathVariable("bno") Long bno, PageRequestDTO pageRequestDTO) {
