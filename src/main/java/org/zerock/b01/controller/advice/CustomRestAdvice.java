@@ -60,8 +60,9 @@ public class CustomRestAdvice {
 
     errorMap.put("time",""+System.currentTimeMillis());
     errorMap.put("msg","No such element Exception");
-    return ResponseEntity.badRequest().body(errorMap);
 
+    return ResponseEntity.badRequest().body(errorMap);
   }
+
 
 }
