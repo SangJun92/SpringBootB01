@@ -1,6 +1,7 @@
 package org.zerock.b01.controller.advice;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
@@ -29,6 +30,19 @@ public class CustomRestAdvice {
         errorMap.put(fieldError.getField(), fieldError.getDefaultMessage());
       });
     }
+    return ResponseEntity.badRequest().body(errorMap);
+  }
+
+  // 실행시점 오류 코드 등 로그 기록하는 설정
+  // 사용 할 수 없는 bno로 작성시 발생하는 예외 처리
+  @ExceptionHandler(DataIntegrityViolationException.class)
+  @ResponseStatus(HttpStatus.EXPECTATION_FAILED)
+  public ResponseEntity<Map<String, String>> handleFkException(Exception e) {
+    log.error(e);
+    Map<String, String> errorMap = new HashMap<>();
+
+    errorMap.put("time", ""+System.currentTimeMillis());
+    errorMap.put("msg", "constraint fails");
     return ResponseEntity.badRequest().body(errorMap);
   }
 

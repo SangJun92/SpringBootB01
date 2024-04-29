@@ -63,15 +63,15 @@ public class BoardServiceImpl implements BoardService {
     //레포지토리를 실행하여 데이터 취득
     Page<Board> result = boardRepository.searchAll(types,keyword,pageable);
     // VO를 DTO로 변환
-     List<BoardDTO>dtoList = result.getContent().stream()
-        .map(board -> modelMapper.map(board, BoardDTO.class))
-        .collect(Collectors.toList());
+    List<BoardDTO>dtoList = result.getContent().stream()
+            .map(board -> modelMapper.map(board, BoardDTO.class))
+            .collect(Collectors.toList());
 
     return PageResponseDTO.<BoardDTO>withAll()
-        .pageRequestDTO(pageRequestDTO)
-        .dtoList(dtoList)
-        .total((int)result.getTotalElements())
-        .build();
+            .pageRequestDTO(pageRequestDTO)
+            .dtoList(dtoList)
+            .total((int)result.getTotalElements())
+            .build();
   }
 
   // 게시글 목록 조회시 , 댓글 갯수 같이 출력
@@ -91,10 +91,10 @@ public class BoardServiceImpl implements BoardService {
     // 우리는 자동으로 Projections 이용해서, 미리 자동으로 타입을 변환 하게 설정 해둠.
 
     return PageResponseDTO.<BoardListReplyCountDTO>withAll()
-        .pageRequestDTO(pageRequestDTO)
-        .dtoList(result.getContent())
-        .total((int)result.getTotalElements())
-        .build();
+            .pageRequestDTO(pageRequestDTO)
+            .dtoList(result.getContent())
+            .total((int)result.getTotalElements())
+            .build();
   }
 }
 
