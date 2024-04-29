@@ -8,6 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.zerock.b01.dto.PageRequestDTO;
+import org.zerock.b01.dto.PageResponseDTO;
 import org.zerock.b01.dto.ReplyDTO;
 import org.zerock.b01.service.ReplyService;
 
@@ -51,5 +53,9 @@ public class ReplyController {
   }
 
   // 특정 댓글 하나 조회
-  @GetMapping
+  @GetMapping(value = "/list/{bno}")
+  public PageResponseDTO<ReplyDTO> getList(@PathVariable("bno") Long bno, PageRequestDTO pageRequestDTO) {
+    PageResponseDTO<ReplyDTO> responseDTO = replyService.getListOfBoard(bno, pageRequestDTO);
+    return responseDTO;
+  }
 }
