@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.zerock.b01.domain.Reply;
 import org.zerock.b01.dto.PageRequestDTO;
 import org.zerock.b01.dto.PageResponseDTO;
 import org.zerock.b01.dto.ReplyDTO;
@@ -57,5 +58,14 @@ public class ReplyController {
   public PageResponseDTO<ReplyDTO> getList(@PathVariable("bno") Long bno, PageRequestDTO pageRequestDTO) {
     PageResponseDTO<ReplyDTO> responseDTO = replyService.getListOfBoard(bno, pageRequestDTO);
     return responseDTO;
+  }
+
+  @Tag(name = "댓글 읽기", description = "get 방식 특정 게시물의 댓글 조회")
+  // 특정 댓글 하나 조회
+  @GetMapping(value = "/{rno}")
+  public ReplyDTO getReply(@PathVariable("rno") Long rno) {
+    ReplyDTO replyDTO = replyService.read(rno);
+
+    return replyDTO;;
   }
 }
