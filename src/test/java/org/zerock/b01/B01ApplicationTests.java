@@ -11,22 +11,23 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@Log4j2
 @SpringBootTest
 class B01ApplicationTests {
-	@Autowired
-	private DataSource dataSource;
 
-	@Test
-	public void testConnection() throws SQLException {
-		@Cleanup
-		Connection con = dataSource.getConnection();
-		log.info(con);
-		Assertions.assertNotNull(con);
-	}
-
-	@Test
-	void contextLoads() {
-	}
+  @Test
+  void contextLoads() {
+  }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

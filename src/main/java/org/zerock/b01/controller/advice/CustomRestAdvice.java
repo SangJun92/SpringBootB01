@@ -15,21 +15,21 @@ import java.util.Map;
 @RestControllerAdvice
 @Log4j2
 public class CustomRestAdvice {
-    // REST 방식으로 개발시, 로그 기록을 하는 도구들 설정.
-    @ExceptionHandler(BindException.class)
-    @ResponseStatus(HttpStatus.EXPECTATION_FAILED)
-    public ResponseEntity<Map<String, String>> handleBindException(BindException e) {
-        log.error(e);
-        Map<String, String> errorMap = new HashMap<>();
+  // REST 방식으로 개발시, 로그 기록을 하는 도구들 설정.
+  @ExceptionHandler(BindException.class)
+  @ResponseStatus(HttpStatus.EXPECTATION_FAILED)
+  public ResponseEntity<Map<String, String>> handleBindException(BindException e) {
+    log.error(e);
+    Map<String, String> errorMap = new HashMap<>();
 
-        if(e.hasErrors()){
-            BindingResult bindingResult = e.getBindingResult();
+    if(e.hasErrors()){
+      BindingResult bindingResult = e.getBindingResult();
 
-            bindingResult.getFieldErrors().forEach(fieldError -> {
-                errorMap.put(fieldError.getField(), fieldError.getDefaultMessage());
-            });
-        }
-        return ResponseEntity.badRequest().body(errorMap);
+      bindingResult.getFieldErrors().forEach(fieldError -> {
+        errorMap.put(fieldError.getField(), fieldError.getDefaultMessage());
+      });
     }
+    return ResponseEntity.badRequest().body(errorMap);
+  }
 
 }

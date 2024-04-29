@@ -16,16 +16,16 @@ import java.time.LocalDateTime;
 
 public class ReplyDTO {
 
-    private Long rno;
+  private Long rno;
 
-    @NotNull
-    private Long bno;
+  @NotNull
+  private Long bno;
 
-    @NotEmpty
-    private String replyText;
+  @NotEmpty
+  private String replyText;
 
-    @NotEmpty
-    private String replyer;
+  @NotEmpty
+  private String replyer;
 
-    private LocalDateTime regDate, modDate;
+  private LocalDateTime regDate, modDate;
 }

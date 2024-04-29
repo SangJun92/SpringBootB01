@@ -24,7 +24,7 @@ $(document).ready(function(){
 			$('#autologin').val('on');
 		}
 	});
-	$('.quick_area').hide();				// 우측 빠른 실행 메뉴 숨김
+	$('.quick_area').hide();				// 우측 빠른 실행 메뉴 숨김 
 });
 </script>
 </head>
@@ -33,12 +33,15 @@ $(document).ready(function(){
 <ul class="skipnavi">
     <li><a href="#container">본문내용</a></li>
 </ul>
-
+<!-- wrap -->
 <div id="wrap" class="s_point">
-
+	
+	<div id="container">
+		
+		<!-- bodytext_area -->
 		<form action="" method="POST">
 			<div class="bodytext_area box_inner">
-
+				<!-- login-wrap -->
 				<div class="login_wrap">
 					<h1 class="loginTit"><a href="index.html"><img src="/img/tit_login.png" alt="TOURIST IN TOUR" /></a></h1>
 					<ul class="login_list">
@@ -51,14 +54,14 @@ $(document).ready(function(){
 						<li class="facebook"><a href="javascript:;"><strong>페이스북</strong> 로그인</a></li>
 						<li class="cellphone"><a href="javascript:;"><strong>이메일 주소</strong> 로그인</a></li> -->
 					</ul>
-
+					
 					<div class="btnonoff_line">
 						<div class="switch"></div>
 						<p>
 							<a href="#" class="btn_onoff" onclick="return false;">로그인 유지</a>
 						</p>
 					</div>
-
+							
 				</div>
 				<!-- //login-wrap -->
 			</div>
@@ -66,28 +69,31 @@ $(document).ready(function(){
 		<!-- //bodytext_area -->
 
 	</div>
+	<!-- //container -->
 
-<footer>
-	<div class="foot_area box_inner">
-		<ul class="foot_list clear">
-			<li><a href="javascript:;">이용약관</a></li>
-			<li><a href="javascript:;">개인정보취급방침</a></li>
-		</ul>
-		<h2>투어리스트인투어</h2>
-		<p class="addr">서울특별시 종로구 혜화동 9길 청운빌딩 5층 <span class="gubun">/</span>
-			<span class="br_line">대표전화 <span class="space0">02-1234-5678</span> <span class="gubun">/</span>
+	<footer>
+		<div class="foot_area box_inner">
+			<ul class="foot_list clear">
+				<li><a href="javascript:;">이용약관</a></li>
+				<li><a href="javascript:;">개인정보취급방침</a></li>
+			</ul>
+			<h2>투어리스트인투어</h2>
+            <p class="addr">서울특별시 종로구 혜화동 9길 청운빌딩 5층 <span class="gubun">/</span>        
+				<span class="br_line">대표전화 <span class="space0">02-1234-5678</span> <span class="gubun">/</span>        
 					<span class="br_line">E-mail : <span class="space0"> titour@touristintour.com</span></span>
 				</span>
-		</p>
-		<p class="copy box_inner">Copyright(c) TouristInTour all right reserved</p>
-		<ul class="snslink clear">
-			<li><a href="javascript:;">blog</a></li>
-			<li><a href="javascript:;">facebook</a></li>
-			<li><a href="javascript:;">instargram</a></li>
-		</ul>
-	</div>
-</footer>
+			</p>
+			<p class="copy box_inner">Copyright(c) TouristInTour all right reserved</p>
+			<ul class="snslink clear">
+				<li><a href="javascript:;">blog</a></li>
+				<li><a href="javascript:;">facebook</a></li>
+				<li><a href="javascript:;">instargram</a></li>
+			</ul>
+		</div>
+	</footer>
 
 </div>
+<!-- //wrap -->
+
 </body>
 </html>

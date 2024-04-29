@@ -8,25 +8,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
-@Log4j2
 @SpringBootTest
+@Log4j2
 public class DataSourceTests {
-    @Autowired
-    private DataSource dataSource;
+  @Autowired
+  private DataSource dataSource;
 
-    @Test
-    public void testConnection() throws SQLException {
-        @Cleanup Connection conn = dataSource.getConnection();
-        @Cleanup PreparedStatement stmt = conn.prepareStatement("select now(),?");
-        stmt.setString(1,"asd");
-        @Cleanup ResultSet rs = stmt.executeQuery();
-        rs.next();
-        log.info(rs.getString(1));
-        Assertions.assertNotNull(conn);
-    }
+  @Test
+  public void testConnection() throws SQLException {
+    @Cleanup Connection conn = dataSource.getConnection();
+    @Cleanup PreparedStatement stmt = conn.prepareStatement("SELECT now(),?");
+    stmt.setString(1, "asd");
+    @Cleanup ResultSet rs = stmt.executeQuery();
+    rs.next();
+    log.info(rs.getString(1));
+    log.info(rs.getString(2));
+    Assertions.assertNotNull(conn);
+  }
 }
