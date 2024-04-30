@@ -14,11 +14,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Member extends BaseEntity {
+public class Member  {
 
     @Id
-//    @Column(length = 300, nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(length = 300, nullable = false)
     private String member_id;
     @Column(length = 300, nullable = false)
     private String member_pw;
@@ -34,8 +33,7 @@ public class Member extends BaseEntity {
     private String gender;
     @Column(length = 4)
     private boolean agree;
-//    @CreatedDate
-//    @Column
-//    private LocalDateTime create_date;
+    @Column
+    private LocalDate create_date;
 
 }

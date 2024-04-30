@@ -11,7 +11,6 @@ import org.zerock.b01.domain.Board;
 import org.zerock.b01.domain.QBoard;
 import org.zerock.b01.domain.QReply;
 import org.zerock.b01.dto.BoardListReplyCountDTO;
-import org.zerock.b01.repository.BoardSearch;
 
 import java.util.List;
 

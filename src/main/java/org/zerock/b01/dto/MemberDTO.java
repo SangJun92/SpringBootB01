@@ -22,5 +22,5 @@ public class MemberDTO {
     private String Email2;
     private String gender;
     private boolean agree;
-    private LocalDateTime create_date;
+    private LocalDate create_date;
 }

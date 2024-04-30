@@ -24,8 +24,7 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public String register(MemberDTO memberDTO) {
         Member member = modelMapper.map(memberDTO, Member.class);
-        Member no =memberRepository.save(member);
-
+        Member no = memberRepository.save(member);
         return no.getMember_id();
     }
 
