@@ -14,26 +14,26 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Member  {
+public class Member extends BaseEntity {
 
     @Id
     @Column(length = 300, nullable = false)
     private String member_id;
     @Column(length = 300, nullable = false)
     private String member_pw;
-    @Column(length = 300)
+    @Column(length = 300, nullable = false)
     private String name;
-    @Column(length = 300)
+    @Column(length = 300, nullable = false)
     private String phone;
-    @Column(length = 300)
+    @Column(length = 300, nullable = false)
     private String Email1;
-    @Column(length = 300)
+    @Column(length = 300, nullable = false)
     private String Email2;
-    @Column(length = 300)
+    @Column(length = 5)
     private String gender;
     @Column(length = 4)
     private boolean agree;
-    @Column
-    private LocalDate create_date;
+//    @Column
+//    private LocalDate create_date;
 
 }

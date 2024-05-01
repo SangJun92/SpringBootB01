@@ -7,7 +7,10 @@ import java.util.List;
 
 public interface MemberService {
 
-    String register(MemberDTO memberDTO);
+//    String register(MemberDTO memberDTO);
+    void register(MemberDTO memberDTO);
+
+    MemberDTO readOne(String memberId);
 
     String remove(MemberDTO memberDTO);
 

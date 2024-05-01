@@ -90,15 +90,15 @@ public class SampleController {
     public void index(Model model) {
     }
 
-    @GetMapping("/ex/join")
-    public void joinGet(MemberDTO memberDTO, Model model) {
-    }
-
-    @PostMapping("/ex/join")
-    public String joinPost(MemberDTO memberDTO, Model model) {
-        String memberId = memberService.register(memberDTO);
-        model.addAttribute("memberId", memberId);
-        return "redirect:/ex/index";
+//    @GetMapping("/ex/join")
+//    public void joinGet(MemberDTO memberDTO, Model model) {
+//    }
+//
+//    @PostMapping("/ex/join")
+//    public String joinPost(MemberDTO memberDTO, Model model) {
+//        String memberId = memberService.register(memberDTO);
+//        model.addAttribute("memberId", memberId);
+//        return "redirect:/ex/index";
 
 //        try {
 //            String memberId = memberService.register(memberDTO);
@@ -110,7 +110,7 @@ public class SampleController {
 //            model.addAttribute("error", "회원 가입 중 오류가 발생했습니다.");
 //            return "error";
 //        }
-    }
+//    }
 
 
     @GetMapping("/ex/login")

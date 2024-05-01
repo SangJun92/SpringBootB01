@@ -21,11 +21,23 @@ public class MemberServiceImpl implements MemberService {
     private final ModelMapper modelMapper;
     private final MemberRepository memberRepository;
 
+//    @Override
+//    public String register(MemberDTO memberDTO) {
+//        Member member = modelMapper.map(memberDTO, Member.class);
+//        Member no = memberRepository.save(member);
+//        return no.getMember_id();
+//    }
+
+
     @Override
-    public String register(MemberDTO memberDTO) {
-        Member member = modelMapper.map(memberDTO, Member.class);
-        Member no = memberRepository.save(member);
-        return no.getMember_id();
+    public void register(MemberDTO memberDTO) {
+        memberRepository.save(modelMapper.map(memberDTO, Member.class));
+    }
+
+    @Override
+    public MemberDTO readOne(String memberId) {
+        return modelMapper.map(memberRepository.findById(memberId), MemberDTO.class);
+
     }
 
     @Override
